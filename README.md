@@ -62,7 +62,9 @@ Both Helm Charts and Kubernetes Manifests are declared to deploy the application
 
 ## Instructions
 
-> Remember to use [Minikube Docker Daemon](https://minikube.sigs.k8s.io/docs/handbook/pushing/) and `imagePullPolicy: IfNotPresent`, before building images locally, by running `eval $(minikube docker-env)`, to make them available to the cluster. Or use Docker-Desktop instead, as it has a built-in Kubernetes cluster.
+> Remember to use [Minikube Docker Daemon](https://minikube.sigs.k8s.io/docs/handbook/pushing/) and `imagePullPolicy: IfNotPresent`, before building images locally, by running `eval $(minikube docker-env)`, to make them available to the cluster. 
+> 
+> Or use Docker-Desktop instead, as it has a built-in Kubernetes cluster.
 
 1. **Start the cluster**: Start your local Minikube cluster by running the command `minikube start`, or allow the Docker Desktop to use the built-in Kubernetes cluster.
 
