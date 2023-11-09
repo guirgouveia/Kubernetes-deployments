@@ -215,3 +215,9 @@ Once you complete this task, you can proceed to the [Terraform](../terraform) ta
 SOPS is an editor of encrypted files that supports YAML, JSON, ENV, INI and BINARY formats and encrypts with AWS KMS, GCP KMS, Azure Key Vault and PGP.
 
 github.com
+
+# Go Application
+
+This repository uses a sample go application to illustrate how to deploy applications to Kubernetes in various ways.
+
+You can find the source code of this application at [golang-webapp](https://github.com/guirgouveia/devops-stack/tree/main/dockerize).
