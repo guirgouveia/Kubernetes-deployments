@@ -4,6 +4,8 @@ This repository explores the multiple options we have available for managing Kub
 
 It uses a simple Go application to illustrate how to deploy applications to Kubernetes in various ways. For more information about the application, please refer to the [Go Application](#go-application) section.
 
+This repository makes extensive use of SOPS best-practices to manage secrets and configuration files. For more information about SOPS, please refer to the [SOPS documentation](https://github.com/getsops/sops).
+
 This document provides instructions on how to use the Kubernetes configuration files developed for deploying the Go application.
 
 ## Kubernetes Resources
@@ -207,3 +209,9 @@ Please, provide us with a file named `app.yaml` you are going to create. Your `a
 ### Next steps?
 
 Once you complete this task, you can proceed to the [Terraform](../terraform) task;
+
+# SOPS ( Secrets OPerationS )
+
+SOPS is an editor of encrypted files that supports YAML, JSON, ENV, INI and BINARY formats and encrypts with AWS KMS, GCP KMS, Azure Key Vault and PGP.
+
+github.com
