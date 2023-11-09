@@ -2,7 +2,7 @@
 
 This repository explores the multiple options we have available for managing Kubernetes workloads.
 
-It uses a simple Go application to illustrate how to deploy applications to Kubernetes in various ways. For more information about the application, please refer to the [Go Application](#go-application) section.
+It uses a simple Go application to illustrate how to deploy applications to Kubernetes in various ways. For more information about the application, please refer to my [go-lang-microservices](github.com/guirgouveia/go-lang-microservices) repository.
 
 This repository makes extensive use of SOPS best-practices to manage secrets and configuration files. For more information about SOPS, please refer to the [SOPS documentation](https://github.com/getsops/sops).
 
