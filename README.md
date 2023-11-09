@@ -10,23 +10,23 @@ This document provides instructions on how to use the Kubernetes configuration f
 
 The [manifests](./manifests/stack-io/) declare the following Kubernetes resources:
 
-- [Namespace](./manifests/namespace.yaml):** The namespace where the application will be deployed.
-- [Deployment](./manifests/deployment.yaml):** The deployment of the application.
-- [Service](./manifests/service.yaml):** The service that exposes the application.
-- [Ingress](./manifests/ingress.yaml):** The ingress that exposes the application to the outside world.
-- [Secret](./manifests/secret.yaml):** The secret of the application.
-- [ConfigMap](./manifests/configmap.yaml):** The configuration of the application.
-- [PersistentVolumeClaim](./manifests/persistentvolumeclaim.yaml):** The persistent volume claim of the application.
-- [Job](./manifests/job.yaml):** The job that runs the database migrations.
-- [CronJob](./manifests/cronjob.yaml):** The cron job that runs the database backups.
-- [HorizontalPodAutoscaler](./manifests/horizontalpodautoscaler.yaml):** The horizontal pod autoscaler that scales the application based on CPU usage.
-- [PodDisruptionBudget](./manifests/poddisruptionbudget.yaml):** The pod disruption budget that ensures that at least one pod is available at all times.
-- [NetworkPolicy](./manifests/networkpolicy.yaml):** The network policy that restricts access to the application.
-- [PodSecurityPolicy](./manifests/podsecuritypolicy.yaml):** The pod security policy that restricts the privileges of the application.
-- [Role](./manifests/role.yaml):** The role that defines the permissions of the application.
-- [RoleBinding](./manifests/rolebinding.yaml):** The role binding that binds the role to the service account.
-- [ServiceAccount](./manifests/serviceaccount.yaml):** The service account that is used by the application.
-- [PodSecurityPolicy](./manifests/podsecuritypolicy.yaml):** The pod security policy that restricts the privileges of the application.
+- [Namespace](./manifests/namespace.yaml) The namespace where the application will be deployed.
+- [Deployment](./manifests/deployment.yaml) The deployment of the application.
+- [Service](./manifests/service.yaml) The service that exposes the application.
+- [Ingress](./manifests/ingress.yaml) The ingress that exposes the application to the outside world.
+- [Secret](./manifests/secret.yaml) The secret of the application.
+- [ConfigMap](./manifests/configmap.yaml) The configuration of the application.
+- [PersistentVolumeClaim](./manifests/persistentvolumeclaim.yaml) The persistent volume claim of the application.
+- [Job](./manifests/job.yaml) The job that runs the database migrations.
+- [CronJob](./manifests/cronjob.yaml) The cron job that runs the database backups.
+- [HorizontalPodAutoscaler](./manifests/horizontalpodautoscaler.yaml) The horizontal pod autoscaler that scales the application based on CPU usage.
+- [PodDisruptionBudget](./manifests/poddisruptionbudget.yaml) The pod disruption budget that ensures that at least one pod is available at all times.
+- [NetworkPolicy](./manifests/networkpolicy.yaml) The network policy that restricts access to the application.
+- [PodSecurityPolicy](./manifests/podsecuritypolicy.yaml) The pod security policy that restricts the privileges of the application.
+- [Role](./manifests/role.yaml) The role that defines the permissions of the application.
+- [RoleBinding](./manifests/rolebinding.yaml) The role binding that binds the role to the service account.
+- [ServiceAccount](./manifests/serviceaccount.yaml) The service account that is used by the application.
+- [PodSecurityPolicy](./manifests/podsecuritypolicy.yaml) The pod security policy that restricts the privileges of the application.
 
 The Deployment includes:
 
