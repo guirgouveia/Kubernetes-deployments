@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+- name: mysql
+  repo: oci://registry-1.docker.io/bitnamicharts
+  version: 9.14.1
+  releaseName: mysql
+  namespace: mysql
+  valuesFile: ./helm/values.yaml
+  additionalValuesFiles:
+    - "./secrets.yaml"
+  includeCRDs: true
+
+configMapGenerator:
+- name: mysql-init-configmap
+  files:
+  - ./config/mysql-init.sh
+
+secretGenerator:
+- name: mysql-secret
+  envs:
+  - ./config/.env.secret
+
+configurations:
+  - kustomizeconfig.yaml

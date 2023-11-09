@@ -1,0 +1,29 @@
+architecture: standalone # Change this to "replication" for a replication architecture
+auth:
+  createDatabase: true
+image:
+  registry: docker.io
+  repository: bitnami/mysql
+  tag: 8.0.35-debian-11-r0
+metrics:
+  enabled: false
+initDbScripts: |-
+  mysql-init.sh:
+    #!/bin/bash
+    set -eo pipefail
+
+    mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" <<-EOSQL
+        GRANT ALL PRIVILEGES ON *.* TO 'stack-io'@'%' WITH GRANT OPTION;
+        GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+        FLUSH PRIVILEGES;
+    EOSQL
+primary:
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: hostpath
+secondary:
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: hostpath
