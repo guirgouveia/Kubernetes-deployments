@@ -4,7 +4,7 @@ This repository explores the multiple options we have available for managing Kub
 
 It uses a simple Go application to illustrate how to deploy applications to Kubernetes in various ways. For more information about the application, please refer to my [go-lang-microservices](github.com/guirgouveia/devops-stack/tree/main/dockerize) repository.
 
-This repository makes extensive use of SOPS best-practices to manage secrets and configuration files. For more information about SOPS, please refer to the [SOPS documentation](https://github.com/getsops/sops).
+The [application's Kubernetes manifests and Helm charts](https://github.com/guirgouveia/go-vuejs-microservices/tree/main/kubernetes) make extensive use of Secrets Operations ( [SOPS](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiYubm2n7uCAxUGLrkGHYLVBdcQFnoECBQQAQ&url=https%3A%2F%2Fgithub.com%2Fgetsops%2Fsops&usg=AOvVaw1VL2ENXs82bAZnq5jAzeH_&opi=89978449) ) to encrypt the secrets before commiting to the repository, so we will use different techniques to decrypt the secrets either before or during the installation.
 
 This document provides instructions on how to use the Kubernetes configuration files developed for deploying the Go application.
 
@@ -75,17 +75,15 @@ Both Helm Charts and Kubernetes Manifests are declared to deploy the application
  
     Here we have many options to deploy the Helm Chart, defining the credentials for MySQL server safely, without exposing them in the values.yaml. Only one of them is used in this repository, but I will list all of them below:
     
-    - **-Deploy the [Bitnami MySQL Helm Chart](https:**//artifacthub.io/packages/helm/bitnami/mysql) with SOPS to encrypt/decrypt the file and store it safely in the repository.
+    - Deploy the [Bitnami MySQL Helm Chart](https:**//artifacthub.io/packages/helm/bitnami/mysql) manually encrpyting/decrypting SOPS to encrypt/decrypt the file and store it safely in the repository.
     - Deploy the Helm chart with `helm secrets` plugin to decrypt the secrets before deploying the Helm Chart.
     - Use Kustomize with `helm secrets` plugin to download the Helm Charts and then patch the templated Helm Chart, for example, to add environment overlays or Secret and ConfigMap generators.
     - Deploy with Skaffold and `helm secrets` plugin
     - Define a helmfile.yaml with `helm secrets` to declare a Helm releases desired state in a declarative way.
+    - Use Kustomize with `helmfile` to download the Helm Charts and then patch the templated Helm Chart, for example, to add environment overlays or Secret and ConfigMap generators.
+    - Use Kustomize with Helm to download the Helm Charts and then patch the templated Helm Chart, for example, to add environment overlays or Secret and ConfigMap generators.
 
-    You canf find detailed information about all these methods in the [Kubernetes Deployments Documentation](../docs/kubernetes-deployments.md) I created specifically to illustrate how to deploy applications to Kubernetes in various ways.
-
-    1. **Install Helmfile**: Install [Helmfile](https:**//helmfile.readthedocs.io)
-
-    2. **Deploy the manifests**: Analogous to the previous step, you can deploy the Helm Charts from my OCI registry with the following command: 
+    1. **Deploy the manifests**: Analogous to the previous step, you can deploy the Helm Charts from my OCI registry with the following command: 
 
         ```bash
         helm upgrade --install stack-io oci://registry-1.docker.io/guirgouveia/stack-io -v ./mysql-values.yaml --create-namespaces -n stack-io
@@ -104,14 +102,14 @@ Both Helm Charts and Kubernetes Manifests are declared to deploy the application
 
             helm install stack-io stack-io/helm/stack-io
 
-    3. **Verify the Deployment and Service**: You can verify that the Deployment and Service were created successfully by running the following commands:
+    2. **Verify the Deployment and Service**: You can verify that the Deployment and Service were created successfully by running the following commands:
 
         ```bash
         kubectl get deployments -n stack-io
         kubectl get services -n stack-io
         ```
 
-    4. **Access the Application**: If everything was set up correctly, you should be able to access the application by forwarding a port from your local machine to the Service in the cluster:
+    3. **Access the Application**: If everything was set up correctly, you should be able to access the application by forwarding a port from your local machine to the Service in the cluster:
 
         ```
         kubectl port-forward svc/stack-io 8083:8080 -n stack-io
